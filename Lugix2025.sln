@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lugix2025.Web", "Lugix2025.Web\Lugix2025.Web.csproj", "{54DE194A-D30C-4827-85E3-D6BE8101F8CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lugx2025.Data", "Lugx2025.Data\Lugx2025.Data.csproj", "{95484FD3-6CFE-4F61-8D3D-CD10BC22273B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lugx2025.BusinessLogic", "Lugx2025.BusinessLogic\Lugx2025.BusinessLogic.csproj", "{35E25FEC-B6D8-4BAE-B7A6-5735B2E797FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{54DE194A-D30C-4827-85E3-D6BE8101F8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54DE194A-D30C-4827-85E3-D6BE8101F8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54DE194A-D30C-4827-85E3-D6BE8101F8CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95484FD3-6CFE-4F61-8D3D-CD10BC22273B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95484FD3-6CFE-4F61-8D3D-CD10BC22273B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95484FD3-6CFE-4F61-8D3D-CD10BC22273B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95484FD3-6CFE-4F61-8D3D-CD10BC22273B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E25FEC-B6D8-4BAE-B7A6-5735B2E797FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E25FEC-B6D8-4BAE-B7A6-5735B2E797FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E25FEC-B6D8-4BAE-B7A6-5735B2E797FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E25FEC-B6D8-4BAE-B7A6-5735B2E797FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
