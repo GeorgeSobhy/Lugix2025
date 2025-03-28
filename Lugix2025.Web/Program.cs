@@ -1,3 +1,7 @@
+using Lugx2025.Data.Context;
+
+using Microsoft.EntityFrameworkCore;
+
 namespace Lugix2025.Web
 {
     public class Program
@@ -8,7 +12,10 @@ namespace Lugix2025.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<ApplicationDBContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("UAT"));
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

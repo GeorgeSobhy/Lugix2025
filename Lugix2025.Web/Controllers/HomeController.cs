@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Lugix2025.Web.Models;
+using Lugx2025.BusinessLogic.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lugix2025.Web.Controllers
