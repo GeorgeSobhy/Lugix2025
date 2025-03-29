@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lugx2025.Data.Entities
 {
-    public class ApplicationUser
+    public class ApplicationUser:IdentityUser<int>
     {
-        [Key]
-        public int ID { get; set; }
+        public string Address { get; set; } = null!;
     }
 }

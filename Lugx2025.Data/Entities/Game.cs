@@ -29,6 +29,8 @@ namespace Lugx2025.Data.Entities
         public DateTime CreationDate { get; set; }
         [Range(0, int.MaxValue)]
         public int PurchaseCount { get; set; }
+        [ForeignKey(nameof(Game.Genre))]
+        public int GenreId { get; set; }
         [ForeignKey(nameof(Game.Uploader))]
         public int UploaderId { get; set; }
         public int VisitorsNumber { get; set; }

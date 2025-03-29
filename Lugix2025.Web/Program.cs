@@ -1,5 +1,6 @@
 using Lugx2025.Data.Context;
-
+using Lugx2025.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lugix2025.Web
@@ -16,6 +17,7 @@ namespace Lugix2025.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("UAT"));
             });
+            builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDBContext>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
