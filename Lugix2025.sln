@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lugx2025.Data", "Lugx2025.Data\Lugx2025.Data.csproj", "{95484FD3-6CFE-4F61-8D3D-CD10BC22273B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lugx2025.BusinessLogic", "Lugx2025.BusinessLogic\Lugx2025.BusinessLogic.csproj", "{35E25FEC-B6D8-4BAE-B7A6-5735B2E797FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{95484FD3-6CFE-4F61-8D3D-CD10BC22273B} = {95484FD3-6CFE-4F61-8D3D-CD10BC22273B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
