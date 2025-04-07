@@ -10,11 +10,11 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
 {
     public interface IContactUsService
     {
-        Task<GameModel?> GetByIdAsync(int id);
-        Task<IEnumerable<GameModel>> GetAllAsync();
-        Task<bool> AddAsync(GameModel entity);
-        Task<bool> UpdateAsync(GameModel entity);
-        Task<bool> DeleteAsync(GameModel entity);
+        Task<ContactUsModel?> GetByIdAsync(int id);
+        Task<IEnumerable<ContactUsModel>> GetAllAsync();
+        Task<bool> AddAsync(ContactUsModel entity);
+        Task<bool> UpdateAsync(ContactUsModel entity);
+        Task<bool> DeleteAsync(ContactUsModel entity);
         Task<bool> DeleteByIdAsync(int id);
     }
 }
