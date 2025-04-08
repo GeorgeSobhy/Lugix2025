@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Lugx2025.Data\Lugx2025.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Game\" />
+  </ItemGroup>
+
 </Project>

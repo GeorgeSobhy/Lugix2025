@@ -1,0 +1,24 @@
+﻿using Lugx2025.BusinessLogic.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Lugix2025.Web.Controllers
+{
+    public class AccountController : Controller
+    {
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Login(LoginVm vm)
+        {
+            if (!ModelState.IsValid)
+                return View();
+            
+            return View();
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
+    }
+}
