@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Lugx2025.BusinessLogic.ViewModels;
 using Lugx2025.Data.Entities;
 using System;
 using System.Collections.Generic;
