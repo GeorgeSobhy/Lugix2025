@@ -1,0 +1,111 @@
+﻿
+@model List<CityModel>
+
+@{
+    ViewData["Title"] = "Cities";
+}
+
+<style>
+    body {
+        background-color: #4070f4;
+    }
+
+    .city-form-container {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .city-form-body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4070f4;
+    }
+
+    .city-form-wrapper {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin-top: 10%;
+    }
+
+    .city-form-group {
+        margin-bottom: 15px;
+    }
+
+    .city-form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .city-form-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .city-form-error {
+        color: red;
+        font-size: 12px;
+    }
+
+    .city-form-check-label {
+        margin-left: 5px;
+    }
+
+    .city-form-submit-button {
+        background-color: #4070f4;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .city-form-submit-button:hover {
+            background-color: #3056d3;
+        }
+
+    .city-form-back-link {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+        .city-form-back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="city-form-body">
+    <div class="city-form-wrapper">
+        <h4>Cities</h4>
+        <hr />
+        <table>
+            <thead>
+                City Id
+            </thead>
+            <thead>
+                City Name
+            </thead>
+        @foreach(var city in Model)
+        {
+            <tr>@city.Id</tr>
+            <tr>@city.Name</tr>
+        }
+        </table>
+        <div>
+            <a asp-action="Index" class="city-form-back-link">Back to List</a>
+        </div>
+    </div>
+</div>

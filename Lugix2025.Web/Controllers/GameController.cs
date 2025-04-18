@@ -1,4 +1,5 @@
-﻿using Lugx2025.BusinessLogic.Services.Interfaces;
+﻿using Lugx2025.BusinessLogic.Models;
+using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 

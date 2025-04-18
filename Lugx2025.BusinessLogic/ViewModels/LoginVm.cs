@@ -15,5 +15,7 @@ namespace Lugx2025.BusinessLogic.ViewModels
         [DataType(DataType.Password)]
         [Required]
         public string Password { get; set; } = null!;
+
+        public bool RememberMe { get; set; }
     }
 }

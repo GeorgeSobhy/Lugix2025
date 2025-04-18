@@ -1,3 +1,7 @@
+using AutoMapper;
+using Lugx2025.BusinessLogic.Profiles;
+using Lugx2025.BusinessLogic.Services;
+using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.Data.Context;
 using Lugx2025.Data.Entities;
 using Lugx2025.Data.Repository;
@@ -19,8 +23,35 @@ namespace Lugix2025.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("UAT"));
             });
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new GeneralProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            builder.Services.AddSingleton(mapper);
+
             builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDBContext>();
             builder.Services.AddScoped<ITagRepository,TagRepository>();
+            builder.Services.AddScoped<IGameRepository,GameRepository>();
+            builder.Services.AddScoped<IContactUsRepository,ContactUsRepository>();
+            builder.Services.AddScoped<IErrorLogRepository,ErrorLogRepository>();
+            builder.Services.AddScoped<IGenreRepository,GenreRepository>();
+            builder.Services.AddScoped<INewsLetterRepository, NewsLetterRepository>();
+            builder.Services.AddScoped<ISettingsRepository,SettingsRepository>();
+            builder.Services.AddScoped<ITopCategoriesRepository,TopCategoriesRepository>();
+            builder.Services.AddScoped<IUserRepository,UserRepository>();
+
+            builder.Services.AddScoped<ITagService, TagService>();
+            builder.Services.AddScoped<IGameService, GameService>();
+            builder.Services.AddScoped<IContactUsService, ContactUsService>();
+            builder.Services.AddScoped<IErrorLogService, ErrorLogService>();
+            builder.Services.AddScoped<IGenreService, GenreService>();
+            builder.Services.AddScoped<INewsLetterService, NewsLetterService>();
+            builder.Services.AddScoped<ISettingsService, SettingsService>();
+            builder.Services.AddScoped<ITopCategoriesService, TopCategoriesService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -1,0 +1,115 @@
+﻿@model CountryModel
+
+@{
+    ViewData["Title"] = "Add New country";
+}
+
+<style>
+    body {
+        background-color: #4070f4;
+    }
+
+    .country-form-container {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .country-form-body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4070f4;
+    }
+
+    .country-form-wrapper {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin-top: 10%;
+    }
+
+    .country-form-group {
+        margin-bottom: 15px;
+    }
+
+    .country-form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .country-form-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .country-form-error {
+        color: red;
+        font-size: 12px;
+    }
+
+    .country-form-check-label {
+        margin-left: 5px;
+    }
+
+    .country-form-submit-button {
+        background-color: #4070f4;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .country-form-submit-button:hover {
+            background-color: #3056d3;
+        }
+
+    .country-form-back-link {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+        .country-form-back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="country-form-body">
+    <div class="country-form-wrapper">
+        <h4>Add New country</h4>
+        <hr />
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="country-form-error"></div>
+            <div class="country-form-group">
+                <label asp-for="Name" class="country-form-label"></label>
+                <input asp-for="Name" class="country-form-input" />
+                <span asp-validation-for="Name" class="country-form-error"></span>
+            </div>
+            <div class="country-form-group">
+                <input type="submit" value="Create" class="country-form-submit-button" />
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index" class="country-form-back-link">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

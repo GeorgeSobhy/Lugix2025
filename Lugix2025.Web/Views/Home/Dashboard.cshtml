@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    body{
+        background-color: #4070f4;
+    }
+    .dashboard-form-container {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .dashboard-form-body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4070f4;
+    }
+
+    .dashboard-form-wrapper {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin-top:10%;
+    }
+
+    .dashboard-form-group {
+        margin-bottom: 15px;
+    }
+
+    .dashboard-form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .dashboard-form-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .dashboard-form-error {
+        color: red;
+        font-size: 12px;
+    }
+
+    .dashboard-form-check-label {
+        margin-left: 5px;
+    }
+
+    .dashboard-form-submit-button {
+        background-color: #4070f4;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .dashboard-form-submit-button:hover {
+            background-color: #3056d3;
+        }
+
+    .dashboard-form-back-link {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+        .dashboard-form-back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="dashboard-form-body">
+    <div class="dashboard-form-wrapper">
+        <h4>Admin Dashboard</h4>
+        <hr />
+        <h5>Games</h5>
+        <a asp-action="index" asp-controller="Product">Games</a><br />
+        <a asp-action="addnewgame" asp-controller="Product">Add new Game</a><br />
+        <h5>City</h5>
+        <a asp-action="index" asp-controller="city">city</a><br />
+        <a asp-action="new" asp-controller="city">Add new city</a><br />
+        <h5>Country</h5>
+        <a asp-action="index" asp-controller="Country">Countries</a><br />
+        <a asp-action="new" asp-controller="Country">Add new Country</a><br /> 
+        <h5>Genre</h5>
+        <a asp-action="index" asp-controller="Genre">Genre</a><br />
+        <a asp-action="new" asp-controller="Genre">Add new Genre</a><br />
+        <h5>Tags</h5>
+        <a asp-action="index" asp-controller="Tag">Tag</a><br />
+        <a asp-action="new" asp-controller="Tag">Add new Tag</a><br />
+        <h5>Reviews</h5>
+        <a asp-action="index" asp-controller="Review">Review</a><br />
+        <h5>Settings</h5>
+        <a asp-action="index" asp-controller="Settings">Settings</a><br />
+
+        <h5>Contact Us</h5>
+        <a asp-action="index" asp-controller="Contactus">ContactUs</a><br />
+    </div>
+</div>
+

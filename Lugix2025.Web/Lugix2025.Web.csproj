@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Game\**" />
+    <Content Remove="Views\Game\**" />
+    <EmbeddedResource Remove="Views\Game\**" />
+    <None Remove="Views\Game\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.14">
       <PrivateAssets>all</PrivateAssets>
@@ -17,10 +25,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Lugx2025.BusinessLogic\Lugx2025.BusinessLogic.csproj" />
     <ProjectReference Include="..\Lugx2025.Data\Lugx2025.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Game\" />
   </ItemGroup>
 
 </Project>

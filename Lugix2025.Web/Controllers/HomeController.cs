@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Lugx2025.BusinessLogic.Models;
+using Lugx2025.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lugix2025.Web.Controllers
@@ -15,7 +16,17 @@ namespace Lugix2025.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new MainPageVM()
+            {
+                GamePriceAfterDiscount = 0,
+                GamePriceWithoutDiscount = 0,
+                MainGameImage = "",
+                MainPageDescription = ""
+
+
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

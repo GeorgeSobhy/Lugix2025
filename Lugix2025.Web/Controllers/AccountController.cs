@@ -5,18 +5,18 @@ namespace Lugix2025.Web.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult Login()
+        public async Task< IActionResult> Login()
         {
             return View();
         }
-        public IActionResult Login(LoginVm vm)
+        public async Task<IActionResult> Login(LoginVm vm)
         {
             if (!ModelState.IsValid)
                 return View();
             
             return View();
         }
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
             return View();
         }

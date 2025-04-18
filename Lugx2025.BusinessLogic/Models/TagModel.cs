@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.Data.Entities
+namespace Lugx2025.BusinessLogic.Models
 {
     public class TagModel
     {
