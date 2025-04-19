@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Lugx2025.BusinessLogic.Models;
 using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.Data.Entities;
 using Lugx2025.Data.Repository.Interfaces;

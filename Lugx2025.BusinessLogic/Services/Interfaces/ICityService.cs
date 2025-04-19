@@ -9,13 +9,13 @@ using Lugx2025.Data.Repository.Interfaces;
 
 namespace Lugx2025.BusinessLogic.Services.Interfaces
 {
-    public interface INewsLetterService
+    public interface ICityService
     {
-        Task<NewsLetterModel?> GetByIdAsync(int id);
-        Task<IEnumerable<NewsLetterModel>> GetAllAsync();
-        Task<bool> AddAsync(NewsLetterModel entity);
-        Task<bool> UpdateAsync(NewsLetterModel entity);
-        Task<bool> DeleteAsync(NewsLetterModel entity);
+        Task<CityModel?> GetByIdAsync(int id);
+        Task<IEnumerable<CityModel>> GetAllAsync();
+        Task<bool> AddAsync(CityModel entity);
+        Task<bool> UpdateAsync(CityModel entity);
+        Task<bool> DeleteAsync(CityModel entity);
         Task<bool> DeleteByIdAsync(int id);
     }
 }

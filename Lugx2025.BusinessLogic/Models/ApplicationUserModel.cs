@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lugx2025.Data.Entities
+namespace Lugx2025.BusinessLogic.Models
 {
     public class ApplicationUserModel:IdentityUser<int>
     {

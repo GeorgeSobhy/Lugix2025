@@ -25,5 +25,8 @@ namespace Lugx2025.Data.Context
         public virtual DbSet<NewsLetter> NewsLetters { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
         public virtual DbSet<TopCategories> TopCategories { get; set; }
+        public virtual DbSet<City> Citys { get; set; }
+        public virtual DbSet<Country> Countrys { get; set; }
+
     }
 }

@@ -1,9 +1,10 @@
-using System.Diagnostics;
 using Lugx2025.BusinessLogic.Models;
 using Lugx2025.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
-namespace Lugix2025.Web.Controllers
+
+namespace Lugx.Website.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,18 +19,25 @@ namespace Lugix2025.Web.Controllers
         {
             var model = new MainPageVM()
             {
-                GamePriceAfterDiscount = 0,
-                GamePriceWithoutDiscount = 0,
-                MainGameImage = "",
-                MainPageDescription = ""
-
-
+                MainPageDescription = "test",
+                MainGameImage = "https://upload.wikimedia.org/wikipedia/en/5/52/Assassin%27s_Creed.jpg",
+                Title = "test",
+                GamePriceAfterDiscount = 100,
+                GamePriceWithoutDiscount = 150,
+                TrendingGames = new List<GameVM>(),
+                MostPlayed = new List<GameVM>(),
+                TopCategoriesGames = new List<GameVM>(),
             };
 
             return View(model);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard()
         {
             return View();
         }

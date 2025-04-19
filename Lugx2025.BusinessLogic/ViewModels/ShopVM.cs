@@ -11,6 +11,7 @@ namespace Lugx2025.BusinessLogic.ViewModels
     {
         public ICollection<GameVM> Games { get; set; }
         public int CurrentPageNumber { get; set; }
+        public int AllPagesNumber { get; set; }
         
     }
 }

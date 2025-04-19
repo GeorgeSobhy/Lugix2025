@@ -9,6 +9,7 @@ namespace Lugx2025.BusinessLogic.ViewModels
     public class MainPageVM
     {
         public string MainGameImage { get; set; } = null!;
+        public string Title { get; set; } = null!;
         public float GamePriceWithoutDiscount { get; set; }
         public string MainPageDescription { get; set; } = null!;
         public float GamePriceAfterDiscount{ get; set; }
