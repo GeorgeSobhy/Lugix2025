@@ -1,8 +1,7 @@
-﻿
-@model List<CityModel>
+﻿@model CityModel
 
 @{
-    ViewData["Title"] = "Cities";
+    ViewData["Title"] = "Edit city";
 }
 
 <style>
@@ -89,32 +88,28 @@
 
 <div class="city-form-body">
     <div class="city-form-wrapper">
-        <h4>Cities</h4>
+        <h4>Edit city</h4>
         <hr />
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>City Id</th>
-                    <th>City Name</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var city in Model)
-                {
-                    <tr>
-                        <td>@city.Id</td>
-                        <td>@city.Name</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@city.Id" class="btn btn-primary">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@city.Id" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="city-form-error"></div>
+            <div class="city-form-group">
+                <label asp-for="Name" class="city-form-label"></label>
+                <input asp-for="Name" class="city-form-input" />
+                <span asp-validation-for="Name" class="city-form-error"></span>
+            </div>
+            <div class="city-form-group">
+                <input type="submit" value="Edit" class="city-form-submit-button" />
+            </div>
+        </form>
+
         <div>
             <a asp-action="Index" class="city-form-back-link">Back to List</a>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
