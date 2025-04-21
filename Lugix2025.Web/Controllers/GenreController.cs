@@ -24,12 +24,12 @@ namespace Lugx.Website.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddNewGenre(GenreModel result)
+        public async Task<IActionResult> AddNewGenre(GenreModel result)
         {
             if(!ModelState.IsValid) 
                 return View(result);
 
-            _genreService.AddAsync(result);
+            await _genreService.AddAsync(result);
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> TopCategories()
@@ -37,7 +37,32 @@ namespace Lugx.Website.Controllers
             List<TopCategoriesModel> topCategories = (await _topCategoriesService.GetAllAsync()).Take(5).ToList();
             return View(topCategories);
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int Id)
+        {
+            var genre = await _genreService.GetByIdAsync(Id);
+            if (genre == null)
+                return NotFound();
 
-    
+            return View(genre);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(GenreModel model)
+        {
+            if(!ModelState.IsValid)
+                return View(model);
+            
+            await _genreService.UpdateAsync(model);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Delete(int Id)
+        {
+            var genre = await _genreService.GetByIdAsync(Id);
+            if (genre == null)
+                return NotFound();
+            await _genreService.DeleteByIdAsync(genre.Id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

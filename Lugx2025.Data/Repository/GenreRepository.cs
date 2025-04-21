@@ -31,7 +31,7 @@ namespace Lugx2025.Data.Repository
 
         public async Task<bool> DeleteByIdAsync(int id)
         {
-            var entity = GetByIdAsync(id);
+            var entity = await GetByIdAsync(id);
 
             if (entity == null)
                 return false;
@@ -47,7 +47,7 @@ namespace Lugx2025.Data.Repository
 
         public async Task<Genre?> GetByIdAsync(int id)
         {
-            return await _dbContext.Genres.FirstOrDefaultAsync();
+            return await _dbContext.Genres.FirstOrDefaultAsync(g=>g.Id == id);
         }
 
         public async Task<bool> UpdateAsync(Genre entity)

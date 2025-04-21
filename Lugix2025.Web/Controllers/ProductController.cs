@@ -2,7 +2,11 @@
 using Lugx2025.BusinessLogic.Models;
 using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.BusinessLogic.ViewModels;
+using Lugx2025.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Lugx.Website.Controllers
 {
@@ -33,16 +37,22 @@ namespace Lugx.Website.Controllers
             });
 
         }
-
+        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> AddNewGame()
         {
             return View();
         }
-
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNewGame(GameModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
+
+            model.UploaderId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)??"0");
+            var result = await _gameService.AddAsync(model);
             return View();
         }
     }

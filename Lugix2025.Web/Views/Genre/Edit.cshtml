@@ -1,0 +1,123 @@
+﻿@model GenreModel
+
+@{
+    ViewData["Title"] = "Edit Genre";
+}
+
+<style>
+    body {
+        background-color: #4070f4;
+    }
+
+    .genre-form-container {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .genre-form-body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4070f4;
+    }
+
+    .genre-form-wrapper {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin-top: 10%;
+    }
+
+    .genre-form-group {
+        margin-bottom: 15px;
+    }
+
+    .genre-form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .genre-form-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .genre-form-error {
+        color: red;
+        font-size: 12px;
+    }
+
+    .genre-form-check-label {
+        margin-left: 5px;
+    }
+
+    .genre-form-submit-button {
+        background-color: #4070f4;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .genre-form-submit-button:hover {
+            background-color: #3056d3;
+        }
+
+    .genre-form-back-link {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+        .genre-form-back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="genre-form-body">
+    <div class="genre-form-wrapper">
+        <h4>Edit Genre</h4>
+        <hr />
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="genre-form-error"></div>
+
+            <div class="genre-form-group">
+                <label asp-for="Name" class="genre-form-label"></label>
+                <input asp-for="Name" class="genre-form-input" />
+                <span asp-validation-for="Name" class="genre-form-error"></span>
+            </div>
+
+            <div class="genre-form-group">
+                <label asp-for="Description" class="genre-form-label"></label>
+                <input asp-for="Description" class="genre-form-input" />
+                <span asp-validation-for="Description" class="genre-form-error"></span>
+            </div>
+
+            <div class="genre-form-group">
+                <input type="submit" value="Create" class="genre-form-submit-button" />
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index" class="genre-form-back-link">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
