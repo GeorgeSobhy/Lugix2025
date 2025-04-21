@@ -1,7 +1,7 @@
-﻿@model List<CountryModel>
+﻿@model CountryModel
 
 @{
-    ViewData["Title"] = "Cities";
+    ViewData["Title"] = "Edit Country";
 }
 
 <style>
@@ -88,23 +88,28 @@
 
 <div class="country-form-body">
     <div class="country-form-wrapper">
-        <h4>Countries</h4>
+        <h4>Edit Country</h4>
         <hr />
-        <table>
-            <thead>
-                country Id
-            </thead>
-            <thead>
-                country Name
-            </thead>
-        @foreach(var country in Model)
-        {
-            <tr>@country.Id</tr>
-            <tr>@country.Name</tr>
-        }
-        </table>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="country-form-error"></div>
+            <div class="country-form-group">
+                <label asp-for="Name" class="country-form-label"></label>
+                <input asp-for="Name" class="country-form-input" />
+                <span asp-validation-for="Name" class="country-form-error"></span>
+            </div>
+            <div class="country-form-group">
+                <input type="submit" value="Edit" class="country-form-submit-button" />
+            </div>
+        </form>
+
         <div>
             <a asp-action="Index" class="country-form-back-link">Back to List</a>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
