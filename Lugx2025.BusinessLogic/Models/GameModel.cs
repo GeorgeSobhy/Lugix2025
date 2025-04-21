@@ -31,9 +31,9 @@ namespace Lugx2025.BusinessLogic.Models
         public int PurchaseCount { get; set; }
         public int GenreId { get; set; }
         public int UploaderId { get; set; }
-        public int VisitorsNumber { get; set; }
-        public float StarsCount {  get; set; }
-        public int ReviewsNumber { get; set; }
+        public int VisitorsNumber { get; set; } = 0;
+        public float StarsCount {  get; set; } = 0;
+        public int ReviewsNumber { get; set; } = 0;
         public string GameCode { get; set; } = null!;
     }
 }

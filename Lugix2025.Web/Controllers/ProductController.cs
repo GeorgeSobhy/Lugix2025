@@ -1,4 +1,5 @@
 ﻿
+using Lugx2025.BusinessLogic.Models;
 using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +34,15 @@ namespace Lugx.Website.Controllers
 
         }
 
-        public IActionResult AddNewGame()
+        public async Task<IActionResult> AddNewGame()
         {
+            return View();
+        }
+
+        public async Task<IActionResult> AddNewGame(GameModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
             return View();
         }
     }

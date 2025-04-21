@@ -23,6 +23,12 @@ namespace Lugx2025.BusinessLogic.Profiles
             CreateMap<NewsLetter, NewsLetterModel>().ReverseMap();
             CreateMap<Settings, SettingsModel>().ReverseMap();
             CreateMap<ApplicationUserModel, ApplicationUser>().ReverseMap();
+            CreateMap<City, CityModel>().ReverseMap();
+            CreateMap<Country, CountryModel>().ReverseMap();
+            CreateMap<RegisterModel,ApplicationUser>().ReverseMap();
+            CreateMap<RegisterModel, ApplicationUserModel>().ReverseMap();
+
+
         }
     }
 }

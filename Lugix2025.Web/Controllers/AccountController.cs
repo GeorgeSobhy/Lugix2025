@@ -5,6 +5,8 @@ using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.BusinessLogic.Models;
 using System.Diagnostics;
 using Lugx2025.BusinessLogic.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Lugx2025.Data.Entities;
 
 namespace Lugix2025.Web.Controllers
 {
@@ -16,42 +18,50 @@ namespace Lugix2025.Web.Controllers
         private readonly ICityService _cityService;
         private readonly ICountryService _countryService;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(ILogger<AccountController> logger, IUserService userService, ICityService cityService, ICountryService countryService, IMapper mapper)
+        public AccountController(ILogger<AccountController> logger, IUserService userService, ICityService cityService, ICountryService countryService, IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _logger = logger;
             _userService = userService;
             _cityService = cityService;
             _countryService = countryService;
             _mapper = mapper;
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+        [NonAction]
+        private async Task Populate()
+        {
+            ViewBag.Cities = (await _cityService.GetAllAsync()).ToList();
+            ViewBag.Countries = (await _countryService.GetAllAsync()).ToList();
         }
         [HttpGet("SignUp")]
-        public IActionResult SignUp()
+        public async Task<IActionResult> SignUp()
         {
-            ViewBag.Cities = _cityService.GetAllAsync(); 
-            ViewBag.Countries = _countryService.GetAllAsync(); 
+            await Populate();
             return View();
         }
         [HttpPost("SignUp")]
         
-        public IActionResult SignUp(RegisterModel model)
+        public async Task<IActionResult> SignUp(RegisterModel model)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Cities = _cityService.GetAllAsync();
-                ViewBag.Countries = _countryService.GetAllAsync();
+                await Populate();
                 return View(model);
             }
-            if(model.Password !=model.ReWritePassword)
+            var newUser = _mapper.Map<ApplicationUser>(model);
+            var result = await _userManager.CreateAsync(newUser, model.Password);
+
+            if (!result.Succeeded)
             {
-                ModelState.AddModelError("matchPassword", "Password & Rewriting password should be the same");
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError("CreateAccount", error.Description);
+                await Populate();
                 return View(model);
             }
-            var newUser = _mapper.Map<ApplicationUserModel>(model);
-            //newUser.CreationDate = DateTime.Now;
-            //newUser.Active = true;
-            //newUser.RoleId = 3;
-            //_userService.Register(newUser);
 
             return RedirectToAction(nameof(Login));
         }
@@ -61,9 +71,24 @@ namespace Lugix2025.Web.Controllers
             return View();
         }
         [HttpPost("Login")]
-        public IActionResult Login(LoginVm model)
+        public async Task<IActionResult> Login(LoginVm model)
         {
-            
+            if (!ModelState.IsValid)
+                return View(model);
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("login", "Email or password or both is wrong");
+                return View(model);
+            }
+            var success = await _userManager.CheckPasswordAsync(user, model.Password);
+
+            if (!success)
+            {
+                ModelState.AddModelError("login", "Email or password or both is wrong");
+                return View(model);
+            }
+            await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
             return RedirectToAction("Index", "Home");
             
         }

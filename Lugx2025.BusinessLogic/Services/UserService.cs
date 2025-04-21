@@ -2,9 +2,11 @@
 using Lugx2025.BusinessLogic.Const;
 using Lugx2025.BusinessLogic.Models;
 using Lugx2025.BusinessLogic.Services.Interfaces;
+using Lugx2025.BusinessLogic.ViewModels;
 using Lugx2025.Data.Entities;
 using Lugx2025.Data.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,8 @@ namespace Lugx2025.BusinessLogic.Services
         public async Task<IEnumerable<ApplicationUserModel>> GetAllAsync() => _mapper.Map<List<ApplicationUserModel>>( await _UserRepository.GetAllAsync());
 
         public async Task<ApplicationUserModel?> GetByIdAsync(int id) =>  _mapper.Map<ApplicationUserModel>( await _UserRepository.GetByIdAsync(id));
-        
+
+
         public async Task Register(RegisterModel model)
         {
             if (model == null)

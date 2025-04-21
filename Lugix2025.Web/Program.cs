@@ -40,6 +40,8 @@ namespace Lugix2025.Web
             builder.Services.AddScoped<ISettingsRepository,SettingsRepository>();
             builder.Services.AddScoped<ITopCategoriesRepository,TopCategoriesRepository>();
             builder.Services.AddScoped<IUserRepository,UserRepository>();
+            builder.Services.AddScoped<ICityRepository,CityRepository>();
+            builder.Services.AddScoped<ICountryRepository,CountryRepository>();
 
             builder.Services.AddScoped<ITagService, TagService>();
             builder.Services.AddScoped<IGameService, GameService>();
@@ -50,7 +52,8 @@ namespace Lugix2025.Web
             builder.Services.AddScoped<ISettingsService, SettingsService>();
             builder.Services.AddScoped<ITopCategoriesService, TopCategoriesService>();
             builder.Services.AddScoped<IUserService, UserService>();
-
+            builder.Services.AddScoped<ICityService, CityService>();
+            builder.Services.AddScoped<ICountryService, CountryService>();
 
             var app = builder.Build();
 
