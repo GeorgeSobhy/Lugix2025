@@ -90,18 +90,27 @@
     <div class="country-form-wrapper">
         <h4>Countries</h4>
         <hr />
-        <table>
+        <table class="table">
             <thead>
-                country Id
+                <tr>
+                    <th>Country Id</th>
+                    <th>Country Name</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
-            <thead>
-                country Name
-            </thead>
-        @foreach(var country in Model)
-        {
-            <tr>@country.Id</tr>
-            <tr>@country.Name</tr>
-        }
+            <tbody>
+                @foreach (var country in Model)
+                {
+                    <tr>
+                        <td>@country.Id</td>
+                        <td>@country.Name</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@country.Id" class="btn btn-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@country.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
         <div>
             <a asp-action="Index" class="country-form-back-link">Back to List</a>

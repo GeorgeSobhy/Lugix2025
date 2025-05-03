@@ -27,7 +27,7 @@ namespace Lugx2025.BusinessLogic.Profiles
             CreateMap<Country, CountryModel>().ReverseMap();
             CreateMap<RegisterModel,ApplicationUser>().ReverseMap();
             CreateMap<RegisterModel, ApplicationUserModel>().ReverseMap();
-
+            CreateMap<ContactUsPageVM, SettingsModel>().ReverseMap();
 
         }
     }

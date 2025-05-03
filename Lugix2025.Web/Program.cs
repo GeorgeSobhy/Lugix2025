@@ -6,6 +6,7 @@ using Lugx2025.Data.Context;
 using Lugx2025.Data.Entities;
 using Lugx2025.Data.Repository;
 using Lugx2025.Data.Repository.Interfaces;
+using Lugx2025.Data.Seeder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ namespace Lugix2025.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +33,6 @@ namespace Lugix2025.Web
 
             builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDBContext>();
             builder.Services.AddScoped<ITagRepository,TagRepository>();
-            builder.Services.AddScoped<IGameRepository,GameRepository>();
             builder.Services.AddScoped<IContactUsRepository,ContactUsRepository>();
             builder.Services.AddScoped<IErrorLogRepository,ErrorLogRepository>();
             builder.Services.AddScoped<IGenreRepository,GenreRepository>();
@@ -42,6 +42,8 @@ namespace Lugix2025.Web
             builder.Services.AddScoped<IUserRepository,UserRepository>();
             builder.Services.AddScoped<ICityRepository,CityRepository>();
             builder.Services.AddScoped<ICountryRepository,CountryRepository>();
+            builder.Services.AddScoped<IGameRepository, GameRepository>();
+
 
             builder.Services.AddScoped<ITagService, TagService>();
             builder.Services.AddScoped<IGameService, GameService>();
@@ -75,7 +77,20 @@ namespace Lugix2025.Web
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
+            
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                     await Seeder.Intialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
             app.Run();
         }
     }

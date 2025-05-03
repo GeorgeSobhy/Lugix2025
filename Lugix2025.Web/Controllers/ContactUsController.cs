@@ -1,4 +1,5 @@
-﻿using Lugx2025.BusinessLogic.Models;
+﻿using AutoMapper;
+using Lugx2025.BusinessLogic.Models;
 using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -9,22 +10,30 @@ namespace Lugx.Website.Controllers
     {
         public ISettingsService _settingsService;
         public IContactUsService _contactUsService;
-        public ContactUsController(ISettingsService settingsService, IContactUsService contactUsService)
+        public IGameService _gameService;
+        public IMapper _mapper;
+        public ContactUsController(ISettingsService settingsService, IContactUsService contactUsService, IMapper mapper, IGameService gameService)
         {
             _settingsService = settingsService;
             _contactUsService = contactUsService;
+            _mapper = mapper;
+            _gameService = gameService;
         }
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            ContactUsPageVM model = new ContactUsPageVM();//_settingsService.QueryFirstModel();
-
-            model.ContactUsAddress = "downtown";
-            model.ContactUsphone = "+1234343433";
-            model.ContactUsEmail = "test@test.com";
-            model.ContactUsDescription = "Description";
             
-            return View(model);
+            var setting = (await _settingsService.GetAllAsync()).LastOrDefault();
+            if(! (setting == null))
+                return View(_mapper.Map<ContactUsPageVM>(setting));
+
+
+            var newSettings = (await _settingsService.GetAllAsync()).LastOrDefault();
+            if (newSettings == null)
+                return RedirectToAction("Index", "dashboard");
+            await _settingsService.AddAsync(newSettings);
+            
+            return View(_mapper.Map<ContactUsPageVM>(newSettings));
         }
         [HttpPost]
         public IActionResult SendMessage(ContactUsModel model)

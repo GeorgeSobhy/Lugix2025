@@ -19,8 +19,11 @@ namespace Lugx2025.Data.Repository
         }
         public async Task<bool> AddAsync(Game entity)
         {
-            await _dbContext.AddAsync(entity);
-            return await _dbContext.SaveChangesAsync()>0;
+
+                await _dbContext.AddAsync(entity);
+                var result = await _dbContext.SaveChangesAsync();
+                return result > 0;
+
         }
 
         public async Task<bool> DeleteAsync(Game entity)
