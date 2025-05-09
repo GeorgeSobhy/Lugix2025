@@ -12,7 +12,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface ISettingsService
     {
         Task<SettingsModel?> GetByIdAsync(int id);
-        Task<IEnumerable<SettingsModel>> GetAllAsync();
+        Task<ICollection<SettingsModel>> GetAllAsync();
         Task<bool> AddAsync(SettingsModel entity);
         Task<bool> UpdateAsync(SettingsModel entity);
         Task<bool> DeleteAsync(SettingsModel entity);

@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _NewsLetterRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<NewsLetterModel>> GetAllAsync() => _mapper.Map<List<NewsLetterModel>>( await _NewsLetterRepository.GetAllAsync());
+        public async Task<ICollection<NewsLetterModel>> GetAllAsync() => _mapper.Map<List<NewsLetterModel>>( await _NewsLetterRepository.GetAllAsync());
 
         public async Task<NewsLetterModel?> GetByIdAsync(int id) =>  _mapper.Map<NewsLetterModel>( await _NewsLetterRepository.GetByIdAsync(id));
 

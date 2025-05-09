@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _TopCategoriesRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<TopCategoriesModel>> GetAllAsync() => _mapper.Map<List<TopCategoriesModel>>( await _TopCategoriesRepository.GetAllAsync());
+        public async Task<ICollection<TopCategoriesModel>> GetAllAsync() => _mapper.Map<List<TopCategoriesModel>>( await _TopCategoriesRepository.GetAllAsync());
 
         public async Task<TopCategoriesModel?> GetByIdAsync(int id) =>  _mapper.Map<TopCategoriesModel>( await _TopCategoriesRepository.GetByIdAsync(id));
 

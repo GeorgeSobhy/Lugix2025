@@ -12,7 +12,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface ITagService
     {
         Task<TagModel?> GetByIdAsync(int id);
-        Task<IEnumerable<TagModel>> GetAllAsync();
+        Task<ICollection<TagModel>> GetAllAsync();
         Task<bool> AddAsync(TagModel entity);
         Task<bool> UpdateAsync(TagModel entity);
         Task<bool> DeleteAsync(TagModel entity);

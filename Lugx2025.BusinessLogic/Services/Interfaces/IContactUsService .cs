@@ -12,7 +12,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface IContactUsService
     {
         Task<ContactUsModel?> GetByIdAsync(int id);
-        Task<IEnumerable<ContactUsModel>> GetAllAsync();
+        Task<ICollection<ContactUsModel>> GetAllAsync();
         Task<bool> AddAsync(ContactUsModel entity);
         Task<bool> UpdateAsync(ContactUsModel entity);
         Task<bool> DeleteAsync(ContactUsModel entity);

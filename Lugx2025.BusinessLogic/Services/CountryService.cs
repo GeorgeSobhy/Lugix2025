@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _CountryRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<CountryModel>> GetAllAsync() => _mapper.Map<List<CountryModel>>( await _CountryRepository.GetAllAsync());
+        public async Task<ICollection<CountryModel>> GetAllAsync() => _mapper.Map<List<CountryModel>>( await _CountryRepository.GetAllAsync());
 
         public async Task<CountryModel?> GetByIdAsync(int id) =>  _mapper.Map<CountryModel>( await _CountryRepository.GetByIdAsync(id));
 

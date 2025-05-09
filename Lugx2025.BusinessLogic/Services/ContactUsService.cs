@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _ContactUsRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<ContactUsModel>> GetAllAsync() => _mapper.Map<List<ContactUsModel>>( await _ContactUsRepository.GetAllAsync());
+        public async Task<ICollection<ContactUsModel>> GetAllAsync() => _mapper.Map<List<ContactUsModel>>( await _ContactUsRepository.GetAllAsync());
 
         public async Task<ContactUsModel?> GetByIdAsync(int id) =>  _mapper.Map<ContactUsModel>( await _ContactUsRepository.GetByIdAsync(id));
 

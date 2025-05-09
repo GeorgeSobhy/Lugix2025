@@ -27,7 +27,7 @@ namespace Lugx2025.BusinessLogic.Services
             _userManager = userManager;
         }
 
-        public async Task<IEnumerable<ApplicationUserModel>> GetAllAsync() => _mapper.Map<List<ApplicationUserModel>>( await _UserRepository.GetAllAsync());
+        public async Task<ICollection<ApplicationUserModel>> GetAllAsync() => _mapper.Map<List<ApplicationUserModel>>( await _UserRepository.GetAllAsync());
 
         public async Task<ApplicationUserModel?> GetByIdAsync(int id) =>  _mapper.Map<ApplicationUserModel>( await _UserRepository.GetByIdAsync(id));
 

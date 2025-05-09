@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _ErrorLogRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<ErrorLogModel>> GetAllAsync() => _mapper.Map<List<ErrorLogModel>>( await _ErrorLogRepository.GetAllAsync());
+        public async Task<ICollection<ErrorLogModel>> GetAllAsync() => _mapper.Map<List<ErrorLogModel>>( await _ErrorLogRepository.GetAllAsync());
 
         public async Task<ErrorLogModel?> GetByIdAsync(int id) =>  _mapper.Map<ErrorLogModel>( await _ErrorLogRepository.GetByIdAsync(id));
 

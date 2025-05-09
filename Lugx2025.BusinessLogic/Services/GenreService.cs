@@ -27,7 +27,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _GenreRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<GenreModel>> GetAllAsync() => _mapper.Map<List<GenreModel>>( await _GenreRepository.GetAllAsync());
+        public async Task<ICollection<GenreModel>> GetAllAsync() => _mapper.Map<List<GenreModel>>( await _GenreRepository.GetAllAsync());
 
         public async Task<GenreModel?> GetByIdAsync(int id) =>  _mapper.Map<GenreModel>( await _GenreRepository.GetByIdAsync(id));
 

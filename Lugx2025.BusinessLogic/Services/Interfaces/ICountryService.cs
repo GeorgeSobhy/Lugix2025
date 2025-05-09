@@ -12,7 +12,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface ICountryService
     {
         Task<CountryModel?> GetByIdAsync(int id);
-        Task<IEnumerable<CountryModel>> GetAllAsync();
+        Task<ICollection<CountryModel>> GetAllAsync();
         Task<bool> AddAsync(CountryModel entity);
         Task<bool> UpdateAsync(CountryModel entity);
         Task<bool> DeleteAsync(CountryModel entity);

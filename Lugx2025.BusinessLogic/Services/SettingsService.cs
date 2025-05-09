@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _SettingsRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<SettingsModel>> GetAllAsync() => _mapper.Map<List<SettingsModel>>( await _SettingsRepository.GetAllAsync());
+        public async Task<ICollection<SettingsModel>> GetAllAsync() => _mapper.Map<List<SettingsModel>>( await _SettingsRepository.GetAllAsync());
 
         public async Task<SettingsModel?> GetByIdAsync(int id) =>  _mapper.Map<SettingsModel>( await _SettingsRepository.GetByIdAsync(id));
 

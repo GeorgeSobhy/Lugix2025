@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,9 +41,15 @@ namespace Lugx2025.Data.Repository
             return await _dbContext.SaveChangesAsync() > 0;
         }
 
-        public async Task<IEnumerable<ApplicationUser>> GetAllAsync()
+        public async Task<ICollection<ApplicationUser>> GetAllAsync(params Expression<Func<ApplicationUser, object>>[] Includes)
         {
-            return await _dbContext.Users.ToListAsync();
+            var query = _dbContext.Users.AsQueryable();
+
+            if (Includes != null)
+            {
+                query = Includes.Aggregate(query, (current, next) => current.Include(next));
+            }
+            return await query.ToListAsync();
         }
 
         public async Task<ApplicationUser?> GetByIdAsync(int id)

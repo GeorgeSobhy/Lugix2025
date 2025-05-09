@@ -26,7 +26,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _TagRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<TagModel>> GetAllAsync() => _mapper.Map<List<TagModel>>( await _TagRepository.GetAllAsync());
+        public async Task<ICollection<TagModel>> GetAllAsync() => _mapper.Map<List<TagModel>>( await _TagRepository.GetAllAsync());
 
         public async Task<TagModel?> GetByIdAsync(int id) =>  _mapper.Map<TagModel>( await _TagRepository.GetByIdAsync(id));
 

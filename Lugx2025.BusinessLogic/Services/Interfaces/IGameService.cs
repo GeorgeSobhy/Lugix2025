@@ -12,11 +12,12 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface IGameService
     {
         Task<GameModel?> GetByIdAsync(int id);
-        Task<IEnumerable<GameModel>> GetAllAsync();
+        Task<ICollection<GameModel>> GetAllAsync();
         Task<bool> AddAsync(GameModel entity);
         Task<bool> UpdateAsync(GameModel entity);
         Task<bool> DeleteAsync(GameModel entity);
         Task<bool> DeleteByIdAsync(int id);
-        Task<IEnumerable<GameModel>> GetTopGamesByCategory(int take, int genreId);
+        Task<ICollection<GameModel>> GetTopGamesByCategory(int take, int genreId);
+        Task<ICollection<GameModel>> GetAllWithGenreAsync();
     }
 }

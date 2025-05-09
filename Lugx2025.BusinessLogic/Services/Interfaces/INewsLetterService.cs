@@ -12,7 +12,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface INewsLetterService
     {
         Task<NewsLetterModel?> GetByIdAsync(int id);
-        Task<IEnumerable<NewsLetterModel>> GetAllAsync();
+        Task<ICollection<NewsLetterModel>> GetAllAsync();
         Task<bool> AddAsync(NewsLetterModel entity);
         Task<bool> UpdateAsync(NewsLetterModel entity);
         Task<bool> DeleteAsync(NewsLetterModel entity);

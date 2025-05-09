@@ -6,6 +6,7 @@ using Lugx2025.Data.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _CityRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<CityModel>> GetAllAsync() => _mapper.Map<List<CityModel>>( await _CityRepository.GetAllAsync());
+        public async Task<ICollection<CityModel>> GetAllAsync() => _mapper.Map<List<CityModel>>( await _CityRepository.GetAllAsync());
 
         public async Task<CityModel?> GetByIdAsync(int id) =>  _mapper.Map<CityModel>( await _CityRepository.GetByIdAsync(id));
 

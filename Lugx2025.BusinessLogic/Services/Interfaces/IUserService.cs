@@ -11,7 +11,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<ApplicationUserModel>> GetAllAsync();
+        Task<ICollection<ApplicationUserModel>> GetAllAsync();
         Task<ApplicationUserModel?> GetByIdAsync(int id);
         Task Register(RegisterModel model);
     }

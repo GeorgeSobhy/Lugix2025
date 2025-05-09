@@ -26,12 +26,13 @@ namespace Lugx2025.BusinessLogic.Services
 
         public async Task<bool> DeleteByIdAsync(int id) => await _gameRepository.DeleteByIdAsync(id);
 
-        public async Task<IEnumerable<GameModel>> GetAllAsync() => _mapper.Map<List<GameModel>>( await _gameRepository.GetAllAsync());
+        public async Task<ICollection<GameModel>> GetAllAsync() => _mapper.Map<List<GameModel>>( await _gameRepository.GetAllAsync());
+        public async Task<ICollection<GameModel>> GetAllWithGenreAsync() => _mapper.Map<List<GameModel>>(await _gameRepository.GetAllAsync(game=>game.Genre));
 
         public async Task<GameModel?> GetByIdAsync(int id) =>  _mapper.Map<GameModel>( await _gameRepository.GetByIdAsync(id));
 
         public async Task<bool> UpdateAsync(GameModel entity) => await _gameRepository.UpdateAsync(_mapper.Map<Game>(entity));
-        public async Task<IEnumerable<GameModel>> GetTopGamesByCategory(int take, int genreId)
+        public async Task<ICollection<GameModel>> GetTopGamesByCategory(int take, int genreId)
         {
             var games = await GetAllAsync();
             return games.Where(g=>g.GenreId == genreId).ToList();

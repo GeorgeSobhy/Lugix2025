@@ -11,7 +11,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface IGenreService
     {
         Task<GenreModel?> GetByIdAsync(int id);
-        Task<IEnumerable<GenreModel>> GetAllAsync();
+        Task<ICollection<GenreModel>> GetAllAsync();
         Task<bool> AddAsync(GenreModel entity);
         Task<bool> UpdateAsync(GenreModel entity);
         Task<bool> DeleteAsync(GenreModel entity);

@@ -12,7 +12,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
     public interface ICityService
     {
         Task<CityModel?> GetByIdAsync(int id);
-        Task<IEnumerable<CityModel>> GetAllAsync();
+        Task<ICollection<CityModel>> GetAllAsync();
         Task<bool> AddAsync(CityModel entity);
         Task<bool> UpdateAsync(CityModel entity);
         Task<bool> DeleteAsync(CityModel entity);
