@@ -12,6 +12,7 @@ namespace Lugx2025.Data.Entities
         [Key]
         public int Id { get; set; }
         public string Name { get; set; } = null!;
+        public string Code { get; set; } = null!;
         public string Description { get; set; } = null!;
         public virtual ICollection<Game> Games { get; set; } = new HashSet<Game>();
     }

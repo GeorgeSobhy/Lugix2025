@@ -54,7 +54,7 @@ namespace Lugx2025.Data.Seeder
             }
             if (!(await genreRepo.GetAllAsync()).Any())
             { 
-                await genreRepo.AddAsync(new Genre() { Name = "Default", Description = "Default" });
+                await genreRepo.AddAsync(new Genre() { Name = "Default", Description = "Default", Code = "dflt"});
             }
 
             if (!(await gameRepo.GetAllAsync()).Any())
