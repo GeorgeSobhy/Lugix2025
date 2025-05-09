@@ -14,7 +14,8 @@ namespace Lugx2025.BusinessLogic.Profiles
     {
         public GeneralProfile()
         {
-            CreateMap<Game, GameModel>().ReverseMap();
+            CreateMap<Game, GameModel>()
+                .ForMember(g=>g.GenreCode,opt=>opt.MapFrom(game=>game.Genre.Code));
             CreateMap<Genre, GenreModel>().ReverseMap();
             CreateMap<Tag, TagModel>().ReverseMap();
             CreateMap<TopCategories, TopCategoriesModel>().ReverseMap();
@@ -28,6 +29,8 @@ namespace Lugx2025.BusinessLogic.Profiles
             CreateMap<RegisterModel,ApplicationUser>().ReverseMap();
             CreateMap<RegisterModel, ApplicationUserModel>().ReverseMap();
             CreateMap<ContactUsPageVM, SettingsModel>().ReverseMap();
+            CreateMap<GameModel, GameVM>();
+
 
         }
     }

@@ -27,8 +27,8 @@
             <div class="col-lg-4 offset-lg-2">
                 <div class="right-image">
                     <img src="@Model.MainGameImage" alt="">
-                    <span class="price">@Model.GamePriceAfterDiscount</span>
-                    <span class="offer">-@Model.GamePriceWithoutDiscount/@Model.GamePriceAfterDiscount%</span>
+                    <span class="price">@Model.GamePriceAfterDiscount$</span>
+                    <span class="offer">-@(Math.Round(100*@Model.GamePriceAfterDiscount/Model.GamePriceWithoutDiscount))%</span>
                 </div>
             </div>
         </div>

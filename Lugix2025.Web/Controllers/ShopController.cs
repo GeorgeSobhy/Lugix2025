@@ -17,22 +17,40 @@ namespace Lugx.Website.Controllers
             _mapper = mapper;
             _genreService = genreService;
         }
-        public async Task<IActionResult> Index([FromQuery]string? SearchText)
+        public async Task<IActionResult> Index([FromQuery]string? SearchText, int Id = 1)
         {
             ShopVM shopPageVM = new ShopVM();
-            //shopPageVM.genre = _mapper.Map<List<GenreModel>>( (await _genreService.GetAllAsync()).Take(5));
-            shopPageVM.AllPagesNumber= 10;
-            shopPageVM.CurrentPageNumber = 1;
-            
+
+            var allGames = (await _gameService.GetAllWithGenreAsync());
+
+            var allPagesCount = (int)Math.Ceiling(allGames.Count / 12.0);
+
+
+            if (Id < 1 || Id > allPagesCount)
+                Id = 1;
+
+            // Set pagination properties
+            shopPageVM.AllPagesNumber = allPagesCount;
+            shopPageVM.Genres = (await _genreService.GetAllAsync()).OrderBy(g => g.Name).Take(6).ToList();
+            shopPageVM.CurrentPageNumber = Id;
             if (string.IsNullOrEmpty(SearchText))
             {
-                shopPageVM.Games = _mapper.Map<List<GameVM>>((await _gameService.GetAllAsync()).Take(5));
-                return View(shopPageVM);
-            }    
+                // Implement proper pagination instead of just taking 5
+                shopPageVM.Games = _mapper.Map<List<GameVM>>(allGames)
+                     .Skip((Id - 1) * 12)
+                     .Take(12)
+                     .ToList();
+            }
+            else
+            {
+                // Add search functionality
+                shopPageVM.Games = _mapper.Map<List<GameVM>>(allGames)
+                    .Where(g => g.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase))
+                    .Skip((Id - 1) * 12)
+                    .Take(12)
+                    .ToList();
+            }
 
-            SearchText = SearchText.ToLower();
-
-             shopPageVM.Games = _mapper.Map<List<GameVM>>( (await _gameService.GetAllAsync()).Where(game => game.Name.ToLower().Contains(SearchText)));
             return View(shopPageVM);
         }
     }

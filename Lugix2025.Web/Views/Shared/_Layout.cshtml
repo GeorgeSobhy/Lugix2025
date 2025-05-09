@@ -48,15 +48,19 @@
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li><a asp-action ="index" asp-controller="Home" class="active">Home</a></li>
-							<li><a asp-action="index" asp-controller="shop">Our Shop</a></li>
-							<li><a asp-action="index" asp-controller="product">Product Details</a></li>
-							<li><a asp-action="Index" asp-controller="ContactUs" >Contact Us</a></li>
-							@if(!@Context?.User.Identity?.IsAuthenticated??false)
+							@{
+								var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+								var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+							}
+							<li><a asp-action="index" asp-controller="Home" class="@((currentController == "Home" && currentAction == "Index") ? "active" : "")">Home</a></li>
+							<li><a asp-action="index" asp-controller="shop" class="@((currentController == "Shop" && currentAction == "Index") ? "active" : "")">Our Shop</a></li>
+							<li><a asp-action="Index" asp-controller="ContactUs" class="@((currentController == "ContactUs" && currentAction == "Index") ? "active" : "")">Contact Us</a></li>
+							@if (!@Context?.User.Identity?.IsAuthenticated ?? false)
 							{
-								<li><a asp-action="Login" asp-controller="Account" >Login</a></li>
+								<li><a asp-action="Login" asp-controller="Account" class="@((currentController == "Account" && currentAction == "Login") ? "active" : "")">Login</a></li>
 								<li><a asp-action="SignUp" asp-controller="Account">Create Account</a></li>
-							}else
+							}
+							else
 							{
 								<li><a>@Context?.User?.Identity?.Name</a></li>
 							}

@@ -17,7 +17,7 @@ namespace Lugx.Website.Controllers
         {
             _gameService = gameService;
         }
-        public IActionResult Index(String gameName)
+        public IActionResult Index(String GameCode)
         {
             //var result = _gameService.QueryModel(g=>g.GameCode ==gameName);
             //return View(result);

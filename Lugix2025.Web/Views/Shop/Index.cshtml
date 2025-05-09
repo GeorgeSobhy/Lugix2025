@@ -1,256 +1,141 @@
-﻿<style>
+﻿@using Lugx2025.BusinessLogic.ViewModels
+@model ShopVM
+<style>
     .search-container {
-        display: flex;
-        justify-content: center;
-        margin: 50px auto;
-        max-width: 600px;
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+    max-width: 600px;
     }
 
     .search-box {
-        width: 100%;
-        padding: 15px;
-        font-size: 16px;
-        border: 2px solid #dfe1e5;
-        border-radius: 24px;
-        outline: none;
-        transition: all 0.3s ease;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #dfe1e5;
+    border-radius: 24px;
+    outline: none;
+    transition: all 0.3s ease;
     }
 
-        .search-box:focus {
-            border-color: #4a90e2;
-            box-shadow: 0 1px 6px rgba(32,33,36,.28);
-        }
+    .search-box:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 1px 6px rgba(32,33,36,.28);
+    }
 
     .search-button {
-        margin-left: 10px;
-        padding: 15px 25px;
-        background-color: #4a90e2;
-        border: none;
-        border-radius: 24px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
+    margin-left: 10px;
+    padding: 15px 25px;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
     }
 
-        .search-button:hover {
-            background-color: #357abd;
-            transform: scale(1.05);
-        }
+    .search-button:hover {
+    background-color: #357abd;
+    transform: scale(1.05);
+    }
 
-        .search-button:active {
-            transform: scale(0.95);
-        }
+    .search-button:active {
+    transform: scale(0.95);
+    }
 </style>
 <div class="page-heading header-text">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="search-container">
                     <input type="text"
-                           class="search-box"
-                           id="searchInput"
-                           placeholder="Search the web..."
-                           aria-label="Search"
-                           autocomplete="off">
-                    <button class="search-button">
+                    class="search-box"
+                    id="searchInput"
+                    placeholder="Search the web..."
+                    aria-label="Search"
+                    autocomplete="off">
+                    <button class="search-button" id="searchButton">
                         Search
                     </button>
                 </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <div class="section trending">
+<div class="section trending">
     <div class="container">
-      <ul class="trending-filter">
-        <li>
-          <a class="is_active" href="#!" data-filter="*">Show All</a>
-        </li>
-        <li>
-          <a href="#!" data-filter=".adv">Adventure</a>
-        </li>
-        <li>
-          <a href="#!" data-filter=".str">Strategy</a>
-        </li>
-        <li>
-          <a href="#!" data-filter=".rac">Racing</a>
-        </li>
-      </ul>
-      <div class="row trending-box">
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-01.jpg" alt=""></a>
-              <span class="price"><em>$36</em>$24</span>
+        <ul class="trending-filter">
+            <li>
+                <a class="is_active" href="#!" data-filter="*">Show All</a>
+            </li>
+            @foreach(var genre in Model.Genres)
+            {
+                <li>
+                    <a href="#!" data-filter=".@genre.Code">@genre.Name</a>
+                </li>
+            }
+
+
+        </ul>
+        <div class="row trending-box">
+            @foreach (var game in Model.Games)
+            {
+                <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 @game.GenreCode ">
+                    <div class="item">
+                        <div class="thumb">
+                            <a asp-controller="Product" asp-action="Index" asp-route-GameCode="@game.GameCode"><img src="@game.PhotoPath" alt=""></a>
+                            <span class="price"><em>$@game.PriceBeforeSale</em>$@game.PriceAfterSale</span>
+                        </div>
+                        <div class="down-content">
+                            <span class="category">Action</span>
+                            <h4>@game.Name</h4>
+                            <a asp-controller="Product" asp-action="Index" asp-route-GameCode="@game.GameCode"><i class="fa fa-shopping-bag"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            </<div>
+
+
+
             </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+
+        </div>            <div class="row">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li><a href="?id=@(Model.CurrentPageNumber-1)"> &lt; </a></li>
+                    @for (int i = 1; i <= Model.AllPagesNumber; i++)
+                    {
+                        if (i == Model.CurrentPageNumber)
+                        {
+                            <li><a href="#" class="is_active">@i</a></li>
+                        }
+
+                        else
+                        {
+                            <li><a href="#">@i</a></li>
+                        }
+                    }
+                    <li><a href="?id=@(Model.CurrentPageNumber+1)"> &gt; </a></li>
+                </ul>
             </div>
-          </div>
         </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 str">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-02.jpg" alt=""></a>
-              <span class="price"><em>$32</em>$22</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv rac">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-03.jpg" alt=""></a>
-              <span class="price"><em>$45</em>$30</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 str">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-04.jpg" alt=""></a>
-              <span class="price"><em>$32</em>$22</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 rac str">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-03.jpg" alt=""></a>
-              <span class="price"><em>$38</em>$26</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 rac adv">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-01.jpg" alt=""></a>
-              <span class="price"><em>$30</em>$20</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 rac str">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-04.jpg" alt=""></a>
-              <span class="price"><em>$32</em>$22</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 rac adv">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-02.jpg" alt=""></a>
-              <span class="price"><em>$32</em>$22</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv rac">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-03.jpg" alt=""></a>
-              <span class="price"><em>$28</em>$20</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 str">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-04.jpg" alt=""></a>
-              <span class="price"><em>$26</em>$18</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-01.jpg" alt=""></a>
-              <span class="price"><em>$32</em>$24</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 str">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-02.jpg" alt=""></a>
-              <span class="price"><em>$45</em>$30</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="pagination">
-          <li><a href="#"> &lt; </a></li>
-            <li><a href="#">1</a></li>
-            <li><a class="is_active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#"> &gt; </a></li>
-          </ul>
-        </div>
-      </div>
-	</div>
+</div>
+    
 </div>
 
 <script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+        const searchTerm = document.getElementById("searchInput").value.trim();
+        if (searchTerm) {
+                window.location.href = `?SearchText=${searchTerm}`;
+        }
+    });
+
+
 document.getElementById('searchInput').addEventListener('keypress', function(e) {
 		if (e.key === 'Enter') {
 			performSearch();

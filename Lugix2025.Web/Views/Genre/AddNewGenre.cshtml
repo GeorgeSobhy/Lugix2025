@@ -105,7 +105,11 @@
                 <input asp-for="Description" class="genre-form-input" />
                 <span asp-validation-for="Description" class="genre-form-error"></span>
             </div>
-
+            <div class="genre-form-group">
+                <label asp-for="Code" class="genre-form-label"></label>
+                <input asp-for="Code" class="genre-form-input" />
+                <span asp-validation-for="Code" class="genre-form-error"></span>
+            </div>
             <div class="genre-form-group">
                 <input type="submit" value="Create" class="genre-form-submit-button" />
             </div>
