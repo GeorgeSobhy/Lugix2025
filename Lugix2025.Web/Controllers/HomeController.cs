@@ -51,7 +51,7 @@ namespace Lugx.Website.Controllers
             model.MainGameImage = mainGame!.PhotoPath;
             model.GamePriceWithoutDiscount = mainGame!.PriceBeforeSale;
             model.GamePriceAfterDiscount = mainGame.PriceAfterSale;
-            model.TopCategoriesGames = _mapper.Map<List<GameVM>>(await _gameService.GetAllAsync()).Take(6).ToList();
+            model.TopCategoriesGames = _mapper.Map<List<GameVM>>(await _gameService.GetAllWithGenreAsync()).Take(6).ToList();
 
             return View(model);
         }

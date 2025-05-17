@@ -77,6 +77,7 @@ namespace Lugx2025.Data.Seeder
                     PhotoPath = "https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium"
                 };
                 await gameRepo.AddAsync(game);
+
             }
             if(!(await settingsRepo.GetAllAsync()).Any())
             {

@@ -17,7 +17,7 @@ namespace Lugx2025.BusinessLogic.Services.Interfaces
         Task<bool> UpdateAsync(GameModel entity);
         Task<bool> DeleteAsync(GameModel entity);
         Task<bool> DeleteByIdAsync(int id);
-        Task<ICollection<GameModel>> GetTopGamesByCategory(int take, int genreId);
+        Task<ICollection<GameModel>> GetTopGamesByCategory(int take, string genreCode);
         Task<ICollection<GameModel>> GetAllWithGenreAsync();
     }
 }

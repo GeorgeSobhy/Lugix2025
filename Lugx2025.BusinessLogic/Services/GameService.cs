@@ -32,10 +32,10 @@ namespace Lugx2025.BusinessLogic.Services
         public async Task<GameModel?> GetByIdAsync(int id) =>  _mapper.Map<GameModel>( await _gameRepository.GetByIdAsync(id));
 
         public async Task<bool> UpdateAsync(GameModel entity) => await _gameRepository.UpdateAsync(_mapper.Map<Game>(entity));
-        public async Task<ICollection<GameModel>> GetTopGamesByCategory(int take, int genreId)
+        public async Task<ICollection<GameModel>> GetTopGamesByCategory(int take, string genreCode)
         {
             var games = await GetAllAsync();
-            return games.Where(g=>g.GenreId == genreId).ToList();
+            return games.Where(g=>g.GenreCode == genreCode).ToList();
         }
     }
 }

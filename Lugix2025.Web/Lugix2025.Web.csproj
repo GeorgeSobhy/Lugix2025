@@ -27,4 +27,11 @@
     <ProjectReference Include="..\Lugx2025.Data\Lugx2025.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\css\Dashboard.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

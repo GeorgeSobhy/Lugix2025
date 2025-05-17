@@ -20,7 +20,7 @@ namespace Lugx2025.BusinessLogic.ViewModels
         public float PriceBeforeSale { get; set; }
         [Range(0, float.MaxValue)]
         public float PriceAfterSale { get; set; }
-        public string Genre { get; set; } = null!;
+        public string GenreName { get; set; } = null!;
 
         public string GenreCode { get; set; } = null!;
         public string GameCode { get; set; } = null!;

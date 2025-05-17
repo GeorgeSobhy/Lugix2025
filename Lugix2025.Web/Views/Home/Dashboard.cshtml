@@ -1,115 +1,185 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Dashboard";
+    Layout = "_Layout"; // Make sure this points to your layout file
 }
 
-<style>
-    body{
-        background-color: #4070f4;
-    }
-    .dashboard-form-container {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .dashboard-form-body {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #4070f4;
-    }
-
-    .dashboard-form-wrapper {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 500px;
-        margin-top:10%;
-    }
-
-    .dashboard-form-group {
-        margin-bottom: 15px;
-    }
-
-    .dashboard-form-label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .dashboard-form-input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .dashboard-form-error {
-        color: red;
-        font-size: 12px;
-    }
-
-    .dashboard-form-check-label {
-        margin-left: 5px;
-    }
-
-    .dashboard-form-submit-button {
-        background-color: #4070f4;
-        border: none;
-        padding: 10px 20px;
-        color: white;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-        .dashboard-form-submit-button:hover {
-            background-color: #3056d3;
+@section Head {
+    <style>
+        .admin-dashboard {
+            min-height: calc(100vh - 150px);
+            padding: 40px 0;
+            background: #0071f8;
         }
 
-    .dashboard-form-back-link {
-        display: block;
-        margin-top: 15px;
-        text-align: center;
-        color: #4070f4;
-        text-decoration: none;
-    }
-
-        .dashboard-form-back-link:hover {
-            text-decoration: underline;
+        .dashboard-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-top: 20px;
         }
-</style>
 
-<div class="dashboard-form-body">
-    <div class="dashboard-form-wrapper">
-        <h4>Admin Dashboard</h4>
-        <hr />
-        <h5>Games</h5>
-        <a asp-action="index" asp-controller="Product">Games</a><br />
-        <a asp-action="addnewgame" asp-controller="Product">Add new Game</a><br />
-        <h5>City</h5>
-        <a asp-action="index" asp-controller="city">city</a><br />
-        <a asp-action="new" asp-controller="city">Add new city</a><br />
-        <h5>Country</h5>
-        <a asp-action="index" asp-controller="Country">Countries</a><br />
-        <a asp-action="new" asp-controller="Country">Add new Country</a><br /> 
-        <h5>Genre</h5>
-        <a asp-action="index" asp-controller="Genre">Genre</a><br />
-        <a asp-action="AddNewGenre" asp-controller="Genre">Add new Genre</a><br />
-        <h5>Tags</h5>
-        <a asp-action="index" asp-controller="Tag">Tag</a><br />
-        <a asp-action="new" asp-controller="Tag">Add new Tag</a><br />
-        <h5>Reviews</h5>
-        <a asp-action="index" asp-controller="Review">Review</a><br />
-        <h5>Settings</h5>
-        <a asp-action="index" asp-controller="Settings">Settings</a><br />
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4070f4;
+        }
 
-        <h5>Contact Us</h5>
-        <a asp-action="index" asp-controller="Contactus">ContactUs</a><br />
+            .dashboard-header h2 {
+                color: #4070f4;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+        .dashboard-section {
+            margin-bottom: 30px;
+        }
+
+            .dashboard-section h4 {
+                color: #4070f4;
+                border-left: 4px solid #4070f4;
+                padding-left: 10px;
+                margin-bottom: 15px;
+            }
+
+        .dashboard-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .dashboard-link {
+            display: block;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid #4070f4;
+        }
+
+            .dashboard-link:hover {
+                background-color: #4070f4;
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(64, 112, 244, 0.3);
+            }
+
+            .dashboard-link i {
+                margin-right: 10px;
+                color: #4070f4;
+            }
+
+            .dashboard-link:hover i {
+                color: white;
+            }
+
+        .welcome-message {
+            background-color: #4070f4;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        
+
+
+    </style>
+}
+
+<div class="admin-dashboard">
+    <div class="container">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+                <p>Manage all aspects of your gaming website</p>
+            </div>
+
+            <div class="welcome-message">
+                <h4>Welcome back, @Context?.User?.Identity?.Name!</h4>
+            </div>
+
+            <div class="dashboard-section">
+                <h4><i class="fas fa-gamepad"></i> Games Management</h4>
+                <div class="dashboard-links">
+                    <a class="dashboard-link" asp-action="index" asp-controller="Product">
+                        <i class="fas fa-list"></i> All Games
+                    </a>
+                    <a class="dashboard-link" asp-action="addnewgame" asp-controller="Product">
+                        <i class="fas fa-plus-circle"></i> Add New Game
+                    </a>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <h4><i class="fas fa-globe"></i> Location Management</h4>
+                <div class="dashboard-links">
+                    <a class="dashboard-link" asp-action="index" asp-controller="city">
+                        <i class="fas fa-city"></i> Cities
+                    </a>
+                    <a class="dashboard-link" asp-action="new" asp-controller="city">
+                        <i class="fas fa-plus"></i> Add New City
+                    </a>
+                    <a class="dashboard-link" asp-action="index" asp-controller="Country">
+                        <i class="fas fa-flag"></i> Countries
+                    </a>
+                    <a class="dashboard-link" asp-action="new" asp-controller="Country">
+                        <i class="fas fa-plus"></i> Add New Country
+                    </a>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <h4><i class="fas fa-tags"></i> Categories & Tags</h4>
+                <div class="dashboard-links">
+                    <a class="dashboard-link" asp-action="index" asp-controller="Genre">
+                        <i class="fas fa-theater-masks"></i> Genres
+                    </a>
+                    <a class="dashboard-link" asp-action="AddNewGenre" asp-controller="Genre">
+                        <i class="fas fa-plus"></i> Add New Genre
+                    </a>
+                    <a class="dashboard-link" asp-action="index" asp-controller="Tag">
+                        <i class="fas fa-tag"></i> Tags
+                    </a>
+                    <a class="dashboard-link" asp-action="new" asp-controller="Tag">
+                        <i class="fas fa-plus"></i> Add New Tag
+                    </a>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <h4><i class="fas fa-comments"></i> User Content</h4>
+                <div class="dashboard-links">
+                    <a class="dashboard-link" asp-action="index" asp-controller="Review">
+                        <i class="fas fa-star"></i> Reviews
+                    </a>
+                    <a class="dashboard-link" asp-action="index" asp-controller="Contactus">
+                        <i class="fas fa-envelope"></i> Contact Messages
+                    </a>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <h4><i class="fas fa-cog"></i> System Settings</h4>
+                <div class="dashboard-links">
+                    <a class="dashboard-link" asp-action="index" asp-controller="Settings">
+                        <i class="fas fa-sliders-h"></i> Website Settings
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        // You can add any dashboard-specific JavaScript here
+        $(document).ready(function() {
+            console.log("Dashboard loaded successfully");
+        });
+    </script>
+}
