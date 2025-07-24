@@ -1,185 +1,178 @@
 ﻿@{
-    ViewData["Title"] = "Dashboard";
-    Layout = "_Layout"; // Make sure this points to your layout file
+	ViewData["Title"] = "Dashboard";
+	Layout = "_Layout"; // Make sure this points to your layout file
 }
 
 @section Head {
-    <style>
-        .admin-dashboard {
-            min-height: calc(100vh - 150px);
-            padding: 40px 0;
-            background: #0071f8;
-        }
+	<style>
+		.admin-dashboard {
+			min-height: calc(100vh - 150px);
+			padding: 40px 0;
+		}
 
-        .dashboard-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            margin-top: 20px;
-        }
+		.dashboard-container {
+			background-color: rgba(255, 255, 255, 0.95);
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			padding: 30px;
+			margin-top: 100px;
+		}
 
-        .dashboard-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #4070f4;
-        }
+		.dashboard-header {
+			text-align: center;
+			margin-bottom: 30px;
+			padding-bottom: 20px;
+			border-bottom: 2px solid #4070f4;
+		}
 
-            .dashboard-header h2 {
-                color: #4070f4;
-                font-weight: 700;
-                margin-bottom: 10px;
-            }
+			.dashboard-header h2 {
+				color: #4070f4;
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
 
-        .dashboard-section {
-            margin-bottom: 30px;
-        }
+		.dashboard-section {
+			margin-bottom: 30px;
+		}
 
-            .dashboard-section h4 {
-                color: #4070f4;
-                border-left: 4px solid #4070f4;
-                padding-left: 10px;
-                margin-bottom: 15px;
-            }
+			.dashboard-section h4 {
+				color: #4070f4;
+				border-left: 4px solid #4070f4;
+				padding-left: 10px;
+				margin-bottom: 15px;
+			}
 
-        .dashboard-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
+		.dashboard-links {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 15px;
+		}
 
-        .dashboard-link {
-            display: block;
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            color: #333;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 4px solid #4070f4;
-        }
+		.dashboard-link {
+			display: block;
+			background-color: #f8f9fa;
+			padding: 15px;
+			border-radius: 8px;
+			color: #333;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			border-left: 4px solid #4070f4;
+		}
 
-            .dashboard-link:hover {
-                background-color: #4070f4;
-                color: white;
-                transform: translateY(-3px);
-                box-shadow: 0 5px 15px rgba(64, 112, 244, 0.3);
-            }
+			.dashboard-link:hover {
+				background-color: #4070f4;
+				color: white;
+				transform: translateY(-3px);
+				box-shadow: 0 5px 15px rgba(64, 112, 244, 0.3);
+			}
 
-            .dashboard-link i {
-                margin-right: 10px;
-                color: #4070f4;
-            }
+			.dashboard-link i {
+				margin-right: 10px;
+				color: #4070f4;
+			}
 
-            .dashboard-link:hover i {
-                color: white;
-            }
+			.dashboard-link:hover i {
+				color: white;
+			}
 
-        .welcome-message {
-            background-color: #4070f4;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+		.welcome-message {
+			background-color: #4070f4;
+			color: white;
+			padding: 15px;
+			border-radius: 8px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
 
-        
+		body
+		{
+			background-color: #007aff !important;
+		}
 
 
-    </style>
+	</style>
 }
 
 <div class="admin-dashboard">
-    <div class="container">
-        <div class="dashboard-container">
-            <div class="dashboard-header">
-                <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
-                <p>Manage all aspects of your gaming website</p>
-            </div>
+	<div class="container">
+		<div class="dashboard-container">
+			<div class="dashboard-header">
+				<h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+				<p>Manage all aspects of your gaming website</p>
+			</div>
 
-            <div class="welcome-message">
-                <h4>Welcome back, @Context?.User?.Identity?.Name!</h4>
-            </div>
+			<div class="welcome-message">
+				<h4>Welcome back, @Context?.User?.Identity?.Name!</h4>
+			</div>
 
-            <div class="dashboard-section">
-                <h4><i class="fas fa-gamepad"></i> Games Management</h4>
-                <div class="dashboard-links">
-                    <a class="dashboard-link" asp-action="index" asp-controller="Product">
-                        <i class="fas fa-list"></i> All Games
-                    </a>
-                    <a class="dashboard-link" asp-action="addnewgame" asp-controller="Product">
-                        <i class="fas fa-plus-circle"></i> Add New Game
-                    </a>
-                </div>
-            </div>
+			<div class="dashboard-section">
+				<h4><i class="fas fa-gamepad"></i> Games Management</h4>
+				<div class="dashboard-links">
+					<a class="dashboard-link" asp-action="index" asp-controller="Product">
+						<i class="fas fa-list"></i> All Games
+					</a>
+					<a class="dashboard-link" asp-action="addnewgame" asp-controller="Product">
+						<i class="fas fa-plus-circle"></i> Add New Game
+					</a>
+				</div>
+			</div>
 
-            <div class="dashboard-section">
-                <h4><i class="fas fa-globe"></i> Location Management</h4>
-                <div class="dashboard-links">
-                    <a class="dashboard-link" asp-action="index" asp-controller="city">
-                        <i class="fas fa-city"></i> Cities
-                    </a>
-                    <a class="dashboard-link" asp-action="new" asp-controller="city">
-                        <i class="fas fa-plus"></i> Add New City
-                    </a>
-                    <a class="dashboard-link" asp-action="index" asp-controller="Country">
-                        <i class="fas fa-flag"></i> Countries
-                    </a>
-                    <a class="dashboard-link" asp-action="new" asp-controller="Country">
-                        <i class="fas fa-plus"></i> Add New Country
-                    </a>
-                </div>
-            </div>
+			<div class="dashboard-section">
+				<h4><i class="fas fa-globe"></i> Location Management</h4>
+				<div class="dashboard-links">
+					<a class="dashboard-link" asp-action="index" asp-controller="city">
+						<i class="fas fa-city"></i> Cities
+					</a>
+					<a class="dashboard-link" asp-action="new" asp-controller="city">
+						<i class="fas fa-plus"></i> Add New City
+					</a>
+					<a class="dashboard-link" asp-action="index" asp-controller="Country">
+						<i class="fas fa-flag"></i> Countries
+					</a>
+					<a class="dashboard-link" asp-action="new" asp-controller="Country">
+						<i class="fas fa-plus"></i> Add New Country
+					</a>
+				</div>
+			</div>
 
-            <div class="dashboard-section">
-                <h4><i class="fas fa-tags"></i> Categories & Tags</h4>
-                <div class="dashboard-links">
-                    <a class="dashboard-link" asp-action="index" asp-controller="Genre">
-                        <i class="fas fa-theater-masks"></i> Genres
-                    </a>
-                    <a class="dashboard-link" asp-action="AddNewGenre" asp-controller="Genre">
-                        <i class="fas fa-plus"></i> Add New Genre
-                    </a>
-                    <a class="dashboard-link" asp-action="index" asp-controller="Tag">
-                        <i class="fas fa-tag"></i> Tags
-                    </a>
-                    <a class="dashboard-link" asp-action="new" asp-controller="Tag">
-                        <i class="fas fa-plus"></i> Add New Tag
-                    </a>
-                </div>
-            </div>
+			<div class="dashboard-section">
+				<h4><i class="fas fa-tags"></i> Categories & Tags</h4>
+				<div class="dashboard-links">
+					<a class="dashboard-link" asp-action="index" asp-controller="Genre">
+						<i class="fas fa-theater-masks"></i> Genres
+					</a>
+					<a class="dashboard-link" asp-action="AddNewGenre" asp-controller="Genre">
+						<i class="fas fa-plus"></i> Add New Genre
+					</a>
+					<a class="dashboard-link" asp-action="index" asp-controller="Tag">
+						<i class="fas fa-tag"></i> Tags
+					</a>
+					<a class="dashboard-link" asp-action="new" asp-controller="Tag">
+						<i class="fas fa-plus"></i> Add New Tag
+					</a>
+				</div>
+			</div>
 
-            <div class="dashboard-section">
-                <h4><i class="fas fa-comments"></i> User Content</h4>
-                <div class="dashboard-links">
-                    <a class="dashboard-link" asp-action="index" asp-controller="Review">
-                        <i class="fas fa-star"></i> Reviews
-                    </a>
-                    <a class="dashboard-link" asp-action="index" asp-controller="Contactus">
-                        <i class="fas fa-envelope"></i> Contact Messages
-                    </a>
-                </div>
-            </div>
+			<div class="dashboard-section">
+				<h4><i class="fas fa-comments"></i> User Content</h4>
+				<div class="dashboard-links">
+					<a class="dashboard-link" asp-action="index" asp-controller="Review">
+						<i class="fas fa-star"></i> Reviews
+					</a>
+					<a class="dashboard-link" asp-action="index" asp-controller="Contactus">
+						<i class="fas fa-envelope"></i> Contact Messages
+					</a>
+				</div>
+			</div>
 
-            <div class="dashboard-section">
-                <h4><i class="fas fa-cog"></i> System Settings</h4>
-                <div class="dashboard-links">
-                    <a class="dashboard-link" asp-action="index" asp-controller="Settings">
-                        <i class="fas fa-sliders-h"></i> Website Settings
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="dashboard-section">
+				<h4><i class="fas fa-cog"></i> System Settings</h4>
+				<div class="dashboard-links">
+					<a class="dashboard-link" asp-action="index" asp-controller="Settings">
+						<i class="fas fa-sliders-h"></i> Website Settings
+					</a>
+				</div>
+		</div>
+		</div>
+	</div>
 </div>
-
-@section Scripts {
-    <script>
-        // You can add any dashboard-specific JavaScript here
-        $(document).ready(function() {
-            console.log("Dashboard loaded successfully");
-        });
-    </script>
-}
