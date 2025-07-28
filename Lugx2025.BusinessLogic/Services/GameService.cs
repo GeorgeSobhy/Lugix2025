@@ -37,5 +37,6 @@ namespace Lugx2025.BusinessLogic.Services
             var games = await GetAllAsync();
             return games.Where(g=>g.GenreCode == genreCode).ToList();
         }
+        public async Task<GameModel> GetByGameCode(string gameCode) => _mapper.Map<GameModel>((await _gameRepository.GetAllAsync()).Where(g=>g.GameCode == gameCode).LastOrDefault());
     }
 }

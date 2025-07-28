@@ -1,0 +1,165 @@
+﻿@model GameModel
+
+@{
+    ViewData["Title"] = "Edit a Game";
+}
+
+<style>
+    body{
+        background-color: #4070f4;
+    }
+    .game-form-container {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .game-form-body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #4070f4;
+    }
+
+    .game-form-wrapper {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin-top:10%;
+    }
+
+    .game-form-group {
+        margin-bottom: 15px;
+    }
+
+    .game-form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .game-form-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .game-form-error {
+        color: red;
+        font-size: 12px;
+    }
+
+    .game-form-check-label {
+        margin-left: 5px;
+    }
+
+    .game-form-submit-button {
+        background-color: #4070f4;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .game-form-submit-button:hover {
+            background-color: #3056d3;
+        }
+
+    .game-form-back-link {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+        .game-form-back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="game-form-body">
+    <div class="game-form-wrapper">
+        <h4>Edit a Game</h4>
+        <hr />
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="game-form-error"></div>
+
+            <div class="game-form-group">
+                <label asp-for="PhotoPath" class="game-form-label"></label>
+                <input asp-for="PhotoPath" class="game-form-input" />
+                <span asp-validation-for="PhotoPath" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <label asp-for="Name" class="game-form-label"></label>
+                <input asp-for="Name" class="game-form-input" />
+                <span asp-validation-for="Name" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <label asp-for="Description" class="game-form-label"></label>
+                <input asp-for="Description" class="game-form-input" />
+                <span asp-validation-for="Description" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <label asp-for="ShortDescription" class="game-form-label"></label>
+                <input asp-for="ShortDescription" class="game-form-input" />
+                <span asp-validation-for="ShortDescription" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <label asp-for="PriceBeforeSale" class="game-form-label"></label>
+                <input asp-for="PriceBeforeSale" class="game-form-input" />
+                <span asp-validation-for="PriceBeforeSale" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <label asp-for="PriceAfterSale" class="game-form-label"></label>
+                <input asp-for="PriceAfterSale" class="game-form-input" />
+                <span asp-validation-for="PriceAfterSale" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <label asp-for="AvailableCount" class="game-form-label"></label>
+                <input asp-for="AvailableCount" class="game-form-input" />
+                <span asp-validation-for="AvailableCount" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group game-form-check-label">
+                <label>
+                    <input class="game-form-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+
+            <div class="game-form-group">
+                <label asp-for="GameCode" class="game-form-label"></label>
+                <input asp-for="GameCode" class="game-form-input" />
+                <span asp-validation-for="GameCode" class="game-form-error"></span>
+            </div>
+
+            <div class="game-form-group">
+                <input type="submit" value="Edit" class="game-form-submit-button" />
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index" class="game-form-back-link">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
