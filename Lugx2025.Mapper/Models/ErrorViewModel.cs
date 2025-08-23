@@ -1,4 +1,4 @@
-namespace Lugx2025.BusinessLogic.Models
+namespace Lugx2025.Mapper.Models
 {
     public class ErrorViewModel
     {

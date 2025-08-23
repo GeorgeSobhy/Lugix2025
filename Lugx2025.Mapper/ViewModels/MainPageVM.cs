@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.BusinessLogic.ViewModels
+namespace Lugx2025.Mapper.ViewModels
 {
     public class MainPageVM
     {

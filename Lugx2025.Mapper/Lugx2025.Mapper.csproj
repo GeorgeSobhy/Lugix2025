@@ -8,12 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.14" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Lugx2025.Data\Lugx2025.Data.csproj" />
-    <ProjectReference Include="..\Lugx2025.Mapper\Lugx2025.Mapper.csproj" />
   </ItemGroup>
 
 </Project>

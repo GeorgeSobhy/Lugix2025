@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.BusinessLogic.Models
+namespace Lugx2025.Mapper.ViewModels
 {
-    public class CityModel
+    public class TopCategoriesVM
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-
+        public string CategoryName { get; set; } = null!;
+        public string GameImageUrl { get; set; } = null!;
     }
 }

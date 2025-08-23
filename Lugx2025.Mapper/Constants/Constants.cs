@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.BusinessLogic.Const
+namespace Lugx2025.Mapper.Const
 {
     public static class Constants
     {

@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 using AutoMapper;
 using Lugx2025.BusinessLogic.Services.Interfaces;
-using Lugx2025.BusinessLogic.Models;
+using Lugx2025.Mapper.Models;
 using System.Diagnostics;
-using Lugx2025.BusinessLogic.ViewModels;
+using Lugx2025.Mapper.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Lugx2025.Data.Entities;
 

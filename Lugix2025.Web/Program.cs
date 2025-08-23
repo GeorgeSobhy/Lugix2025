@@ -1,5 +1,4 @@
 using AutoMapper;
-using Lugx2025.BusinessLogic.Profiles;
 using Lugx2025.BusinessLogic.Services;
 using Lugx2025.BusinessLogic.Services.Interfaces;
 using Lugx2025.Data.Context;
@@ -7,6 +6,7 @@ using Lugx2025.Data.Entities;
 using Lugx2025.Data.Repository;
 using Lugx2025.Data.Repository.Interfaces;
 using Lugx2025.Data.Seeder;
+using Lugx2025.Mapper.Profiles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,12 +24,9 @@ namespace Lugix2025.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("UAT"));
             });
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new GeneralProfile());
-            });
-            IMapper mapper = mappingConfig.CreateMapper();
-            builder.Services.AddSingleton(mapper);
+
+            builder.Services.AddAutoMapper(typeof(GeneralProfile));
+
 
             builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDBContext>();
             builder.Services.AddScoped<ITagRepository,TagRepository>();

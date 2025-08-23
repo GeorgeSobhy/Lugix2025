@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.BusinessLogic.Models
+namespace Lugx2025.Mapper.Models
 {
-    public class CountryModel
+    public class CityModel
     {
         public int Id { get; set; }
-      
         public string Name { get; set; } = null!;
-        
+
     }
 }

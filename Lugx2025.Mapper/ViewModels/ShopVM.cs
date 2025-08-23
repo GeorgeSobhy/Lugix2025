@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Azure;
-using Lugx2025.BusinessLogic.Models;
+using Lugx2025.Mapper.Models;
 
-namespace Lugx2025.BusinessLogic.ViewModels
+namespace Lugx2025.Mapper.ViewModels
 {
     public class ShopVM
     {

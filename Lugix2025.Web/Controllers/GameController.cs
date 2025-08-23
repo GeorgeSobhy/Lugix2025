@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Lugx2025.BusinessLogic.Models;
+using Lugx2025.Mapper.Models;
 using Lugx2025.BusinessLogic.Services.Interfaces;
-using Lugx2025.BusinessLogic.ViewModels;
+using Lugx2025.Mapper.ViewModels;
 using Lugx2025.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

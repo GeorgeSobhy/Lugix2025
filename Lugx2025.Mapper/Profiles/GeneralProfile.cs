@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using Lugx2025.BusinessLogic.Models;
-using Lugx2025.BusinessLogic.ViewModels;
 using Lugx2025.Data.Entities;
+using Lugx2025.Mapper.Models;
+using Lugx2025.Mapper.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.BusinessLogic.Profiles
+namespace Lugx2025.Mapper.Profiles
 {
     public class GeneralProfile:Profile
     {

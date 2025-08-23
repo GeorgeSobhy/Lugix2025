@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lugx2025.BusinessLogic.Models
+namespace Lugx2025.Mapper.Models
 {
     public class RegisterModel
     {

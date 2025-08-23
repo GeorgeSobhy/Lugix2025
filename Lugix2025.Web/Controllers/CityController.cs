@@ -1,5 +1,5 @@
 ﻿
-using Lugx2025.BusinessLogic.Models;
+using Lugx2025.Mapper.Models;
 using Lugx2025.BusinessLogic.Services;
 using Lugx2025.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
